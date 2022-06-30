@@ -4,28 +4,46 @@
 	--front-color: #2196f3;
 	--other-color: #757575;
 	--light-color: #fff;
+	--icon-color: #afb1b8;
 
 	--main-bg-color: #2f303a;
 	--light-bg-color: #f5f4fa;
 	--btn-bg-color: #2196f3;
+
+	--items: 4;
+	--indent: 30px;
 }
 
 /* Общие стили */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 15px;
 }
+
 .logo {
 	font-family: 'Raleway';
 	font-weight: 700;
 	font-size: 26px;
 	line-height: 1.2;
-	letter-spacing: .03em;
 }
 .logo-color {
 	color: var(--front-color);
 }
+
 .contact {
 	font-weight: 500;
 	letter-spacing: .02em;
@@ -35,16 +53,50 @@
 .contact:focus {
 	color: var(--front-color);
 }
+
 .section {
 	padding: 94px 0;
 }
+
 .title {
 	text-align: center;
 	font-weight: 700;
 	font-size: 36px;
 	line-height: 1.2;
-	letter-spacing: .03em;
 	margin-bottom: 50px;
+}
+
+.social {
+	display: flex;
+	column-gap: 10px;
+}
+.social-center {
+	justify-content: center;
+}
+.social-link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 100%;
+}
+.social-link_bg {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.social-icon {
+	fill: var(--icon-color);
+}
+.social-icon_white {
+	fill: var(--light-color);
+}
+.social-link:hover,
+.social-link:focus {
+	background-color: var(--front-color);
+}
+.social-link:hover .social-icon,
+.social-link:focus .social-icon {
+	fill: var(--light-color);
 }
 
 /* Header */
@@ -57,10 +109,8 @@
 }
 .menu__list {
 	display: flex;
+	column-gap: 50px;
 	margin-left: 93px;
-}
-.menu__item:not(:last-child) {
-	margin-right: 50px;
 }
 .menu__link {
 	font-weight: 500;
@@ -77,14 +127,18 @@
 }
 .header__list {
 	display: flex;
+	column-gap: 50px;
 	margin-left: auto;
 }
-.header__item:not(:last-child) {
-	margin-right: 50px;
-}
 .header__link {
-	display: block;
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
 	padding: 32px 0;
+}
+.header__link:hover .header__icon,
+.header__link:focus .header__icon {
+	fill: var(--front-color);
 }
 
 /* Footer */
@@ -93,6 +147,8 @@
 	padding: 60px 0;
 }
 .footer__container {
+	display: flex;
+	column-gap: 70px;
 }
 .footer__logo {
 	display: block;
@@ -101,18 +157,29 @@
 }
 .footer__address {
 	line-height: 1.7;
-	letter-spacing: .03em;
 	color: var(--light-color);
 	margin-bottom: 9px;
 }
 .footer__item:not(:last-child) {
 	margin-bottom: 9px;
 }
+.footer__title {
+	font-weight: 700;
+	line-height: 2.7;
+	text-transform: uppercase;
+	color: var(--light-color);
+	margin-bottom: 20px;
+}
 
 /* Главная страница */
 /* Section Hero */
 .hero {
 	background-color: var(--main-bg-color);
+	background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), 
+							url("../images/hero/bg.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
 	padding: 200px 0;
 }
 .hero__title {
@@ -123,7 +190,8 @@
 	text-transform: uppercase;
 	color: var(--light-color);
 	text-align: center;
-	margin-bottom: 30px;
+	max-width: 700px;
+	margin: 0 auto 30px;
 }
 .hero__btn {
 	display: block;
@@ -149,13 +217,20 @@
 }
 .benefits__list {
 	display: flex;
+	column-gap: var(--indent);
 }
 .benefits__item {
+	flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
 	letter-spacing: .03em;
-	min-width: 270px;
 }
-.benefits__item:not(:last-child) {
-	margin-right: 30px;
+.benefits__box {
+	padding: 25px 100px;
+	margin-bottom: 30px;
+	background-color: var(--light-bg-color);
+	border-radius: 4px;
+}
+.benefits__icon {
+	display: block;
 }
 .benefits__title {
 	font-weight: 700;
@@ -173,9 +248,11 @@
 }
 .gallery__list {
 	display: flex;
+	column-gap: var(--indent);
+	--items: 3;
 }
-.gallery__item:not(:last-child) {
-	margin-right: 30px;
+.gallery__item {
+	flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
 }
 
 /* Section Team */
@@ -184,20 +261,18 @@
 }
 .team__list {
 	display: flex;
+	column-gap: var(--indent);
 }
 .team__item {
+	flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 
 					0px 1px 1px rgba(0, 0, 0, 0.14), 
 					0px 2px 1px rgba(0, 0,0, 0.2);
 	border-radius: 0px 0px 4px 4px;
 }
-.team__item:not(:last-child) {
-	margin-right: 30px;
-}
 .team__content {
 	font-size: 16px;
 	line-height: 1.2;
-	letter-spacing: .03em;
 	padding: 30px 0;
 	text-align: center;
 	background-color: var(--light-color);
@@ -208,6 +283,33 @@
 }
 .team__dev {
 	color: var(--other-color);
+	margin-bottom: 16px;
+}
+
+/* Section Clients */
+.clients__list {
+	display: flex;
+	column-gap: var(--indent);
+}
+.clients__item {
+	flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
+}
+.clients__link {
+	display: block;
+	padding: 16px 32px;
+	border: 1px solid var(--icon-color);
+	border-radius: 4px;
+}
+.clients__link:hover,
+.clients__link:focus {
+	border-color: var(--front-color);
+}
+.clients__icon {
+	fill: var(--icon-color);
+}
+.clients__link:hover .clients__icon,
+.clients__link:focus .clients__icon {
+	fill: var(--front-color);
 }
 
 /* Страница Портфолио */
@@ -215,10 +317,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	column-gap: 8px;
 	margin-bottom: 50px;
-}
-.portfolio__item:not(:last-child) {
-	margin-right: 8px;
 }
 .portfolio__btn {
 	background-color: var(--light-bg-color);
@@ -226,7 +326,6 @@
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 1.6;
-	letter-spacing: .03em;
 	padding: 6px 22px;
 }
 .portfolio__btn:hover,
@@ -244,10 +343,20 @@
 .portfolio__catalog {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	gap: var(--indent);
+	--items: 3;
 }
-.catalog-portfolio__item:nth-child(-n+6) {
-	margin-bottom: 30px;
+.catalog-portfolio__item {
+	flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
+}
+.catalog-portfolio__link:hover {
+
+}
+.catalog-portfolio__link:hover {
+	display: block;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+					0px 4px 4px rgba(0, 0, 0, 0.06),
+					1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 .catalog-portfolio__content {
 	padding: 20px 24px;
@@ -264,6 +373,5 @@
 .catalog-portfolio__chapter {
 	font-size: 16px;
 	line-height: 1.7;
-	letter-spacing: .03em;
 	color: var(--other-color);
 }

@@ -15,9 +15,10 @@ body {
 }
 body {
 	color: var(--main-color);
-	line-height: 1.1;
 	font-family: 'Roboto', sans-serif;
 	font-size: 14px;
+	line-height: 1.1;
+	letter-spacing: .03em;
 }
 input,
 button,
@@ -44,7 +45,9 @@ ul li {
 	list-style: none;
 }
 img {
-	vertical-align: top;
+	display: block;
+	max-width: 100%;
+	height: auto;
 }
 address {
 	font-style: normal;
