@@ -148,6 +148,7 @@
 }
 .footer__container {
 	display: flex;
+	align-items: baseline;
 	column-gap: 70px;
 }
 .footer__logo {
@@ -165,7 +166,6 @@
 }
 .footer__title {
 	font-weight: 700;
-	line-height: 2.7;
 	text-transform: uppercase;
 	color: var(--light-color);
 	margin-bottom: 20px;
@@ -208,6 +208,7 @@
 }
 .hero__btn:hover,
 .hero__btn:focus {
+	background-color: #188ce8;
 	box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.35);
 }
 
@@ -224,7 +225,11 @@
 	letter-spacing: .03em;
 }
 .benefits__box {
-	padding: 25px 100px;
+	width: 270px;
+	height: 120px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin-bottom: 30px;
 	background-color: var(--light-bg-color);
 	border-radius: 4px;
@@ -295,8 +300,11 @@
 	flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
 }
 .clients__link {
-	display: block;
-	padding: 16px 32px;
+	width: 170px;
+	height: 92px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	border: 1px solid var(--icon-color);
 	border-radius: 4px;
 }
@@ -349,10 +357,8 @@
 .catalog-portfolio__item {
 	flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
 }
-.catalog-portfolio__link:hover {
-
-}
-.catalog-portfolio__link:hover {
+.catalog-portfolio__link:hover,
+.catalog-portfolio__link:focus {
 	display: block;
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
 					0px 4px 4px rgba(0, 0, 0, 0.06),
